@@ -1,6 +1,6 @@
 import fastify from 'fastify'
-import { orgRoutes } from './http/routes'
+import { routes } from './http/routes'
 
 export const app = fastify()
 
-app.register(orgRoutes)
+app.register(routes)

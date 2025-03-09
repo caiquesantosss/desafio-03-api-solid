@@ -1,9 +1,13 @@
 import { FastifyInstance } from 'fastify'
-import { CreateOrg } from './controller/orgs/create-org'
-import { CreatePet } from './controller/pets/create-pets'
+import { createOrgController } from './controllers/orgs/create-org'
+import { createPetController } from './controllers/pets/create-pets'
+import { getPetController } from './controllers/pets/get-pets'
+import { SearchSchemaController } from './controllers/pets/search-pets'
 
-export function orgRoutes(app: FastifyInstance) {
-    app.post('/org', CreateOrg)
-
-    app.post('/pets', CreatePet)
+export async function routes(app: FastifyInstance) {
+    app.post('/orgs', createOrgController)
+    
+    app.post('/orgs/pets', createPetController)
+    app.get('/orgs/pets', SearchSchemaController)
+    app.get('/orgs/pets/:id', getPetController)
 }
