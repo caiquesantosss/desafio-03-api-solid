@@ -6,6 +6,7 @@ interface SearchPetUseCaseRequest {
     age?: string
     size?: string
     energy_level?: string
+    independence_level?: string
     environment?: string
 }
 
@@ -20,16 +21,19 @@ export class SearchPetUseCase {
         city,
         age,
         size,
-        energy_level, 
+        energy_level,
+        independence_level, 
         environment,
     }: SearchPetUseCaseRequest): Promise<SearchPetUseCaseResponse> {
-      const pets = await this.petsRepository.findAll({
-        city, 
-        age,
-        energy_level, 
-        environment
-      })
+        const pets = await this.petsRepository.findAll({
+            city,
+            age,
+            size,
+            energy_level,
+            environment,
+            independence_level
+        })  
 
-      return { pets }
+        return { pets }
     } 
 }

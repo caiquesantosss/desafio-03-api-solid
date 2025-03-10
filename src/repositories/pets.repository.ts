@@ -1,6 +1,7 @@
 import { pets, Prisma } from '@prisma/client'
 
 export interface AllParams {
+    independence_level?: string
     city: string
     age?: string
     size?: string
